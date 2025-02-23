@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function Player({ initialName, symbol }) {
+export default function Player({ initialName, symbol, isActive }) {
     const [playerName, setPlayerName] = useState(initialName); // Oyuncunun adını saklar ve başlangıç adı ile başlar.
     const [isEditing, setIsEditing] = useState(false); // Kullanıcının düzenleme modunda olup olmadığını anlar. False ile başlar yani düzenleme kapalıdır.
 
@@ -21,7 +21,7 @@ export default function Player({ initialName, symbol }) {
     //Eğer isEditing false ise, oyuncunun adı sadece bir <span etiketi içinde gösterilir.
 
     return (
-        <li>
+        <li className={isActive ? 'active' : undefined}>
             <span className="player">
                 {editablePlayerName}
                 <span className="player-symbol">{symbol}</span>
@@ -30,3 +30,4 @@ export default function Player({ initialName, symbol }) {
         </li> // Eğer düzenleme modu açıkçsa isEditing === true butonda Save yazar, değilse 'Edit yazar.
     );
 }
+
